@@ -1,20 +1,20 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
-import Price from "../views/Price.vue"
+import CalculatorView from "../views/CalculatorView.vue";
+import PriceView from "../views/PriceView.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "CalculatorView",
+    component: CalculatorView
   },
   {
     path: "/price",
-    name: "Price",
-    component: Price
+    name: "PriceView",
+    component: PriceView
   }
 ];
 
