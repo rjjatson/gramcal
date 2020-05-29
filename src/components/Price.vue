@@ -21,7 +21,7 @@
         <th>Price per Kg</th>
       </thead>
       <tbody>
-        <tr v-for="p in priceList" v-bind:key="p.paperType">
+        <tr v-for="p in PriceList" v-bind:key="p.paperType">
           <td>{{ p.paperType }}</td>
           <td>{{ p.pricePerKg }}</td>
         </tr>
@@ -36,20 +36,22 @@ import PriceModel from "@/models/price-model";
 
 @Component
 export default class Price extends Vue {
-  priceList = Array<PriceModel>();
-
   public m_paper_type = "";
   public m_price_per_kg = 0;
 
+  get PriceList(): PriceModel[] {
+    return this.$store.state.price;
+  }
+
   save(): void {
-    this.priceList.push({
+    this.$store.dispatch("addPrice", {
       paperType: this.m_paper_type,
       pricePerKg: this.m_price_per_kg
     });
   }
 
   deleteAll(): void {
-    this.priceList = [];
+    this.$store.dispatch("clearPrice");
   }
 }
 </script>
